@@ -113,6 +113,17 @@ your saves first.
 The Updater still checks the official GammaOS OTA server. Installing an official update
 replaces a build of this fork.
 
+## Feedback
+
+Bug reports and ideas are welcome in this fork's
+[Issues](https://github.com/SunnyNighS/GammaOSNextDistribution-14/issues). Please include:
+
+- the device
+- the build date (Settings → About)
+- what you did, what you expected and what happened
+
+Please do not report problems with this fork upstream.
+
 ## License
 
 Same as upstream: Apache-2.0 for the GammaOS and AOSP code. Third-party components keep their
