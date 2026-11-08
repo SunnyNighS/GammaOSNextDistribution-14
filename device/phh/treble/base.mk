@@ -417,3 +417,13 @@ PRODUCT_REMOVE_PACKAGES += \
 # matches the read-barrier runtime that all of our currently supported
 # devices end up using.
 PRODUCT_ENABLE_UFFD_GC := false
+
+# Fork: the Updater and the nano home ask this fork's update source, never the official
+# GammaOS OTA server, so an official release cannot replace a build of this fork. The default
+# source (ota/none.json in the fork's repository) lists no builds, so no update is offered.
+# Point it at your own server, in the same format, with
+#   GAMMAOS_UPDATER_URI=https://ota.example.com/api/v1/{device}/{variant} bash buildtv.sh
+# or by editing the default below. Keep this block the same in base.mk and lineage_tv_arm64_bvN.mk.
+GAMMAOS_UPDATER_URI ?= https://raw.githubusercontent.com/SunnyNighS/GammaOSNextDistribution-14/develop/ota/none.json
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    lineage.updater.uri=$(GAMMAOS_UPDATER_URI)
