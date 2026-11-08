@@ -106,12 +106,30 @@ built from the same tree, or Wi-Fi does not come up.
 
 ## Installing
 
-No prebuilt images are published here. The build gives the same kind of system image as
-upstream, so install it the way you install a GammaOS Next system image on your device. Back up
-your saves first.
+No prebuilt images are published here. An image would contain third-party components that are
+not open source, for example DraStic, and this fork has no permission to redistribute them.
 
-The Updater still checks the official GammaOS OTA server. Installing an official update
-replaces a build of this fork.
+The build gives the same kind of system image as upstream, so install it the way you install a
+GammaOS Next system image on your device. Back up your saves first.
+
+## Updates
+
+Builds of this fork never ask the official GammaOS OTA server, so an official release cannot
+replace them.
+
+- **Default:** the Updater and the nano home ask the URL in `GAMMAOS_UPDATER_URI`. Out of the
+  box that is [`ota/none.json`](ota/none.json) in this repository, which lists no builds, so no
+  update is offered.
+- **Your own server:** to offer your own builds to your own devices, serve them in the format
+  described in `frameworks/base/cmds/gammaos-ota/OTA-SYSTEM.md` and build with:
+
+  ```sh
+  GAMMAOS_UPDATER_URI=https://ota.example.com/api/v1/{device}/{variant} bash buildtv.sh
+  ```
+
+  Alternatively, change the default in `device/phh/treble/lineage_tv_arm64_bvN.mk`, or in
+  `device/phh/treble/base.mk` for the non-TV image.
+- **Moving between the fork and official GammaOS:** do it by hand, never through the Updater.
 
 ## Feedback
 
